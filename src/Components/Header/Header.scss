@@ -1,0 +1,40 @@
+@import "Theme/color.scss";
+
+.header {
+  height: 55rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+
+  &-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 55rem;
+    width: 100%;
+    z-index: -10;
+  }
+
+  &-icon {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    & img {
+      z-index: 5;
+      width: 500px;
+    }
+  }
+  &-content {
+    padding: 0rem 10rem;
+    z-index: 10;
+  }
+  &-heading-1 {
+    color: $heading-color-1;
+    font-size: 6rem;
+  }
+  &-heading-5 {
+    color: $text-color-1;
+    font-size: 3rem;
+  }
+}
