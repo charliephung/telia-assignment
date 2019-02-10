@@ -3,7 +3,7 @@ import "./Cart.scss";
 
 export default function Cart(props) {
   return (
-    <div>
+    <div className="cart">
       <svg
         {...props}
         aria-hidden="true"

@@ -1,6 +1,8 @@
 .cart {
-    position: relative;
-    &-number {
-        position: absolute;
-    }
+  position: relative;
+  &-number {
+    position: absolute;
+    top: -12px;
+    right: 3px;
+  }
 }
