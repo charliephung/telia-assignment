@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import Header from "Components/Header/Header";
-import NavBar from "Components/NavBar/NavBar";
+import NavBarContainer from "Components/NavBarContainer/NavBarContainer";
 import "./App.scss";
 
 class App extends Component {
   render() {
     return (
       <>
-        <NavBar />
+        <NavBarContainer />
         <Header />
+        <div style={{ height: "2000px" }} />
       </>
     );
   }
