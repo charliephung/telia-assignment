@@ -1,0 +1,17 @@
+@import "Theme/color.scss";
+
+.menu-navbar {
+  position: fixed;
+  top: 7rem;
+  z-index: 2;
+  padding: 0 10rem;
+  background-color: $bg-color-gray-1;
+  width: 100%;
+  &-list {
+    list-style: none;
+    display: flex;
+  }
+  &-item {
+    padding: 3rem 3rem;
+  }
+}
