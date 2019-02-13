@@ -1,9 +1,22 @@
 import React from "react";
-import Pin from "Commons/Icons/Pin";
-import Question from "Commons/Icons/Question";
-import People from "Commons/Icons/People";
-import Phone from "Commons/Icons/Phone";
+import Nav from "Commons/Nav/Nav";
+import {
+  Question,
+  People,
+  Pin,
+  Phone,
+  Tablet,
+  Sim,
+  Wifi,
+  Dot,
+  Video,
+  Service,
+  Shopping,
+  LiigaLogo
+} from "Commons/Icons";
+import Container from "Commons/Container/Container";
 import SearchBox from "Commons/SearchBox/SearchBox";
+import classnames from "classnames";
 import "./Menu.scss";
 
 const navItems = [
@@ -13,35 +26,45 @@ const navItems = [
   [Phone, "Take contact"]
 ];
 const contentItem = [
-  "Equipment",
-  "Subscriptions",
-  "Wide bands",
-  "Dot",
-  "TV and Entertainment",
-  "Services",
-  "Bidding",
-  "League"
+  [Tablet, "Equipment"],
+  [Sim, "Subscriptions"],
+  [Wifi, "Wide bands"],
+  [Dot, "Dot"],
+  [Video, "TV and Entertainment"],
+  [Service, "Services"],
+  [Shopping, "Bidding"],
+  [LiigaLogo, "League"]
 ];
 
-export default function Menu() {
+export default function Menu({ className = "menu", addClass = "", ...rest }) {
+  const newClassName = classnames(className, addClass);
   return (
-    <div className="menu">
-      <nav className="menu-navbar">
-        <ul className="menu-navbar-list">
-          {navItems.map(([Icon, content]) => (
-            <li className="menu-navbar-item">
-              <Icon className="menu-navbar-icon" /> {content}
-            </li>
-          ))}
-        </ul>
-        <div style={{ marginLeft: "auto" }}>
-          <SearchBox />
+    <div {...rest} className={newClassName}>
+      <div className="box-shadow-1">
+        <Container addClass="menu__container">
+          <Nav>
+            <Nav.List addClass="menu__list">
+              {navItems.map(([Icon, content], index) => (
+                <Nav.Item key={index} className="menu__item">
+                  <Icon className="menu__icon" /> {content}
+                </Nav.Item>
+              ))}
+            </Nav.List>
+            <div style={{ marginLeft: "auto" }}>
+              <SearchBox />
+            </div>
+          </Nav>
+        </Container>
+        <div style={{ backgroundColor: "white" }}>
+          <Container addClass="menu__content">
+            {contentItem.map(([Icon, content], index) => (
+              <div key={index} className="menu__content__item">
+                <Icon className="menu__content__icon" />
+                {content}
+              </div>
+            ))}
+          </Container>
         </div>
-      </nav>
-      <div className="menu-content">
-        {contentItem.map(content => (
-          <div className="menu-content-item">{content}</div>
-        ))}
       </div>
     </div>
   );
