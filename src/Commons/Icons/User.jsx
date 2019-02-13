@@ -1,9 +1,13 @@
 import React from "react";
+import classnames from "classnames";
 
-export default function User(props) {
+export default function User({ className = "", addClass = "", ...rest }) {
+  const newClassName = classnames(className, addClass);
+
   return (
     <svg
-      {...props}
+      className={newClassName}
+      {...rest}
       aria-hidden="true"
       focusable="false"
       data-prefix="fas"
