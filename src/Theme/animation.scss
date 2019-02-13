@@ -1,0 +1,37 @@
+.drop-enter {
+  transform: translateY(-100%);
+}
+.drop-enter-active {
+  transform: translateY(0%);
+}
+.drop-enter-done {
+  transform: translateY(0%);
+}
+.drop-fade-exit {
+  transform: translateY(-100%);
+}
+.drop-exit-active {
+  transform: translateY(-100%);
+}
+.drop-fade-exit-done {
+  transform: translateY(-100%);
+}
+// ================
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  opacity: 1;
+}
+.fade-enter-done {
+  opacity: 1;
+}
+.fade-fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+}
+.fade-fade-exit-done {
+  opacity: 0;
+}
