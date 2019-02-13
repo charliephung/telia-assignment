@@ -19,7 +19,7 @@ export class Burger extends Component {
     const handleClick = this.isControlled()
       ? () => this.props.onChange(open)
       : this.onClick;
-    const classname = open ? "burger-stack" : "burger-stack active";
+    const classname = open ? "burger-stack active" : "burger-stack";
     return (
       <div {...this.props} onClick={handleClick} className={`burger`}>
         <div

@@ -1,17 +1,44 @@
 @import "Theme/color.scss";
 
-.menu-navbar {
+.menu {
   position: fixed;
   top: 7rem;
   z-index: 2;
   padding: 0 10rem;
-  background-color: $bg-color-gray-1;
+  background-color: $gray-1;
   width: 100%;
-  &-list {
-    list-style: none;
-    display: flex;
+
+  &-content {
+    padding: 0 10rem;
+    background-color: #fff;
+    width: 100%;
   }
-  &-item {
-    padding: 3rem 3rem;
+
+  &-navbar {
+    width: 120rem;
+    display: flex;
+    align-items: center;
+    &-list {
+      list-style: none;
+      display: flex;
+    }
+    &-item {
+      padding: 3rem 1rem;
+      display: flex;
+      width: 250px;
+      align-items: center;
+      font-size: 1.3rem;
+      cursor: pointer;
+      &:hover {
+        color: $purple-1;
+        font-weight: bold;
+        fill: $purple-1;
+      }
+    }
+    &-icon {
+      height: 4rem;
+      width: 4rem;
+      padding-right: 1rem;
+    }
   }
 }

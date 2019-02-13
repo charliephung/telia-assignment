@@ -1,27 +1,34 @@
 import React, { Component } from "react";
 import Section from "Features/Section/Section";
-import NavBar from "./NavBar/NavBar";
 import Menu from "./Menu/Menu";
+import NavBar from "./NavBar/NavBar";
 import "./NavBarContainer.scss";
 
 export default class NavBarContainer extends Component {
+  state = { openMenu: true };
   render() {
+    const { openMenu } = this.state;
     return (
       <>
         <Section config={{ threshold: 1 }}>
           {({ entry }) =>
             entry.intersectionRatio === 1 ? (
               <div className="navbar-container--fixed">
-                <NavBar />
+                <NavBar
+                  onChange={openMenu => this.setState(() => ({ openMenu }))}
+                  showLanguage={true}
+                />
               </div>
             ) : (
               <div className="navbar-container--fixed">
-                <NavBar showLanguage={true} />
+                <NavBar
+                  onChange={openMenu => this.setState(() => ({ openMenu }))}
+                />
               </div>
             )
           }
         </Section>
-        <Menu />
+        {openMenu && <Menu />}
       </>
     );
   }

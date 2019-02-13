@@ -1,3 +1,23 @@
-$heading-color-1: #b246ea;
-$text-color-1: #aaaaaa;
-$bg-color-gray-1: #e4e4e4;
+$purple-1: #b246ea;
+$gray-1: #aaaaaa;
+$gray-2: #e4e4e4;
+
+/* color utils */
+.color-purple-1 {
+  color: $purple-1;
+}
+.bg-color-purple-1 {
+  color: $purple-1;
+}
+.color-gray-1 {
+  color: $gray-1;
+}
+.bg-color-gray-1 {
+  color: $gray-1;
+}
+.color-gray-2 {
+  color: $gray-2;
+}
+.bg-color-gray-2 {
+  color: $gray-2;
+}
