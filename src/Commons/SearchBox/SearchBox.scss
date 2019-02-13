@@ -17,7 +17,7 @@
 
   &:hover &-input {
     transition: all 0.2s ease;
-    width: 17rem;
+    width: 18rem; /* 25 - 7 */
   }
   &:hover &-icon {
     transition: all 0.2s ease;
@@ -29,7 +29,7 @@
   }
   &-input:focus {
     transition: all 0.2s ease;
-    width: 16rem;
+    width: 17rem; /* 25 - 7 -1 */
     border-bottom: 2px solid $purple-1;
   }
 

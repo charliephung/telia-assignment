@@ -3,15 +3,14 @@ import Pin from "Commons/Icons/Pin";
 import Question from "Commons/Icons/Question";
 import People from "Commons/Icons/People";
 import Phone from "Commons/Icons/Phone";
-import Search from "Commons/Icons/Search";
 import SearchBox from "Commons/SearchBox/SearchBox";
 import "./Menu.scss";
 
 const navItems = [
-  [<Pin className="menu-navbar-icon" />, "Find a deal"],
-  [<Question className="menu-navbar-icon" />, "Find instructions"],
-  [<People className="menu-navbar-icon" />, "Ask the Community"],
-  [<Phone className="menu-navbar-icon" />, "Take contact"]
+  [Pin, "Find a deal"],
+  [Question, "Find instructions"],
+  [People, "Ask the Community"],
+  [Phone, "Take contact"]
 ];
 const contentItem = [
   "Equipment",
@@ -31,7 +30,7 @@ export default function Menu() {
         <ul className="menu-navbar-list">
           {navItems.map(([Icon, content]) => (
             <li className="menu-navbar-item">
-              {Icon} {content}
+              <Icon className="menu-navbar-icon" /> {content}
             </li>
           ))}
         </ul>
@@ -39,9 +38,11 @@ export default function Menu() {
           <SearchBox />
         </div>
       </nav>
-      <ul className="menu-content">
-        <li className="menu-content-item">Hello</li>
-      </ul>
+      <div className="menu-content">
+        {contentItem.map(content => (
+          <div className="menu-content-item">{content}</div>
+        ))}
+      </div>
     </div>
   );
 }

@@ -5,7 +5,7 @@
   top: 7rem;
   z-index: 2;
   padding: 0 10rem;
-  background-color: $gray-1;
+  background-color: $gray-2;
   width: 100%;
 
   &-content {
@@ -15,12 +15,13 @@
   }
 
   &-navbar {
-    width: 120rem;
+    // width: 120rem;
     display: flex;
     align-items: center;
     &-list {
       list-style: none;
       display: flex;
+      flex-wrap: wrap;
     }
     &-item {
       padding: 3rem 1rem;
