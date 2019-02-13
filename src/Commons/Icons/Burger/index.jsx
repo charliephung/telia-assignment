@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import classnames from "classnames";
 import PropTypes from "prop-types";
 
 import "./Burger.scss";
@@ -15,20 +16,23 @@ export class Burger extends Component {
     }));
   };
   render() {
-    const open = this.isControlled() ? this.props.open : this.state.open;
+    const { open, onChange, className="burger", addClass, ...rest } = this.props;
+    const isOpen = this.isControlled() ? open : this.state.open;
     const handleClick = this.isControlled()
-      ? () => this.props.onChange(open)
+      ? () => onChange(isOpen)
       : this.onClick;
-    const classname = open ? "burger-stack active" : "burger-stack";
+    const stackClass = isOpen ? `burger-stack active ` : `burger-stack`;
+    const newClassName = classnames(className, addClass);
+
     return (
-      <div {...this.props} onClick={handleClick} className={`burger`}>
+      <div {...rest} onClick={handleClick} className={newClassName}>
         <div
           style={{
             backgroundColor: this.props.backgroundcolor || "",
             width: this.props.width || "",
             height: this.props.height || ""
           }}
-          className={classname}
+          className={stackClass}
         />
       </div>
     );
@@ -36,11 +40,15 @@ export class Burger extends Component {
 }
 
 Burger.defaultProps = {
-  onChange: () => {}
+  onChange: () => {},
+  addClass: "",
+  backgroundcolor: "#b246ea"
 };
 Burger.propTypes = {
   onChange: PropTypes.func,
-  open: PropTypes.bool
+  open: PropTypes.bool,
+  addClass: PropTypes.string,
+  backgroundcolor: PropTypes.string
 };
 
 export default Burger;
