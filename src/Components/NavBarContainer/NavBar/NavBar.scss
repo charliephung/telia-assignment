@@ -1,16 +1,39 @@
 @import "Theme/color.scss";
 .navbar {
-  &-icon {
-    height: 3.3rem;
+  &__brand {
+    height: 4.5rem;
+    width: 12rem;
+    fill: $purple-1;
+  }
+  &__icon {
+    height: 2.6rem;
     color: $purple-1;
-    padding-right: 1rem;
+    padding-right: 2rem;
     display: flex;
     align-items: center;
+    fill: $purple-1;
   }
-  &-item {
+  &__item {
     color: $purple-1;
+    position: relative;
+    font-size: 1.6rem;
+    &::before {
+      transition: all 0.5s;
+      transform-origin: center;
+      position: absolute;
+      content: "";
+      top: calc(100% - 3px);
+      left: 0;
+      height: 3px;
+      background-color: $purple-1;
+      width: 100%;
+      transform: scaleX(0);
+    }
+    &--active::before {
+      transform: scaleX(1);
+    }
   }
-  &-span {
+  &__span {
     font-size: 1.5rem;
     transition: all 0.2s ease;
     transform: translateX(-100%);
@@ -34,11 +57,5 @@
       text-decoration: underline;
       font-weight: 700;
     }
-  }
-
-  &-brand {
-    height: 4.5rem;
-    width: 12rem;
-    fill: $purple-1;
   }
 }

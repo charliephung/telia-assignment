@@ -1,63 +1,49 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Nav from "Commons/Nav/Nav";
-import Icon from "Commons/Icons/Logo";
-import User from "Commons/Icons/User";
-import Burger from "Commons/Icons/Burger";
-import Cart from "Commons/Icons/Cart";
+import classnames from "classnames";
+import { Logo, User, Burger, Cart } from "Commons/Icons";
 import "./NavBar.scss";
 
-const language = ["FI", "SV", "EN"];
+const languages = ["FI", "SV", "EN"];
+const navItems = [[Burger, "MENU"], [User, "LOGIN"], [Cart, ""]];
+
 class NavBar extends Component {
-  state = { openMenu: false };
-
-  onClickMenu = () => {
-    const { onChange } = this.props;
-    this.setState(
-      ({ openMenu }) => ({ openMenu: !openMenu }),
-      () => {
-        onChange(this.state.openMenu);
-      }
-    );
-  };
-
   render() {
-    const { showLanguage } = this.props;
-    const showLanguageClassName = showLanguage
-      ? "navbar-span navbar-span--show"
-      : "navbar-span";
+    const { showLanguage, activeItem, onItemClick, ...rest } = this.props;
+
     return (
-      <Nav addClass="box-shadow-1">
+      <Nav {...rest}>
         <Nav.List>
-          <Nav.Item>
-            <Icon className="navbar-brand" />
-          </Nav.Item>
+          <Logo className="navbar__brand" />
         </Nav.List>
-        <span className={showLanguageClassName}>
+        <span
+          className={classnames("navbar__span", {
+            "navbar__span navbar__span--show": showLanguage
+          })}
+        >
           <ul>
-            {language.map(l => (
-              <li>{l}</li>
+            {languages.map((language, index) => (
+              <li key={index}>{language}</li>
             ))}
           </ul>
         </span>
         <Nav.List addClass="right">
-          <Nav.Item addClass="navbar-item" onClick={this.onClickMenu}>
-            <Burger
-              open={this.state.openMenu}
-              className="navbar-icon"
-              backgroundcolor={"#b246ea"}
-              width={"4rem"}
-              height={".6rem"}
-            />
-            Menu
-          </Nav.Item>
-          <Nav.Item addClass="navbar-item">
-            <User className="navbar-icon" />
-            Login
-          </Nav.Item>
-          <Nav.Item addClass="navbar-item">
-            <Cart className="navbar-icon" />
-          </Nav.Item>
+          {navItems.map(([Item, content], index) => (
+            <Nav.Item
+              key={index}
+              addClass={classnames("navbar__item", {
+                "navbar__item navbar__item--active": activeItem === index
+              })}
+              onClick={() => onItemClick(index)}
+            >
+              <Item
+                open={activeItem === 0 ? true : false}
+                addClass="navbar__icon"
+              />
+              {content}
+            </Nav.Item>
+          ))}
         </Nav.List>
       </Nav>
     );
@@ -66,10 +52,14 @@ class NavBar extends Component {
 
 NavBar.propTypes = {
   onChange: PropTypes.func,
-  showLanguage: PropTypes.bool
+  showLanguage: PropTypes.bool,
+  onItemClick: PropTypes.func,
+  activeItem: PropTypes.number
 };
 NavBar.defaultProps = {
-  onChange: () => {}
+  onChange: () => {},
+  onItemClick: () => {},
+  activeItem: null
 };
 
 export default NavBar;
