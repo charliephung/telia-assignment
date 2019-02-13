@@ -1,8 +1,8 @@
 @import "Theme/shadow.scss";
 
 .nav {
-  padding: 0rem 10rem;
   display: flex;
+  align-items: center;
 
   & .right {
     margin-left: auto;
@@ -21,22 +21,14 @@
   &-link {
     transition: all 0.2s ease;
     height: 7rem;
-    margin: 0 1rem;
-    width: 14rem;
     justify-content: center;
     display: flex;
     align-items: center;
     font-size: 1.6rem;
     font-weight: bold;
     cursor: pointer;
-    &:hover {
-      transform: skewY(-2deg);
-    }
   }
   &-item:not(:last-child) {
-    margin-right: 2rem;
-  }
-  &-link:not(:last-child) {
-    margin-right: 2rem;
+    margin-right: 7rem;
   }
 }

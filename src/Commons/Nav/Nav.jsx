@@ -13,15 +13,7 @@ const List = ({ className, addClass = "", children, ...rest }) => {
 const Item = ({ className, addClass = "", children, ...rest }) => {
   if (className === undefined) className = "nav-item " + addClass;
   else className += " " + addClass;
-  return (
-    <li {...rest} className={className}>
-      {children}
-    </li>
-  );
-};
-const Link = ({ className, addClass = "", children, ...rest }) => {
-  if (className === undefined) className = "nav-link " + addClass;
-  else className += " " + addClass;
+
   return (
     <li {...rest} className={className}>
       {children}
