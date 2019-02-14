@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import { Email, People, FingerPrint } from "Commons/Icons";
 import Container from "Commons/Container/Container";
 import BankCodeForm from "./BankCodeForm/BankCodeForm";
@@ -40,7 +41,12 @@ export default class LoginForm extends PureComponent {
   };
 
   render() {
-    const { className = "login-form", addClass = "", ...rest } = this.props;
+    const {
+      className = "login-form box-shadow-1",
+      addClass = "",
+      onCloseClick = () => {},
+      ...rest
+    } = this.props;
     const { activeItem } = this.state;
 
     const newClassName = classnames(className, addClass);
@@ -49,11 +55,11 @@ export default class LoginForm extends PureComponent {
       <div {...rest} className={newClassName}>
         <Container
           style={{
-            backgroundColor: "white",
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
             paddingTop: "3rem"
           }}
         >
-          <h1 className="color-gray-3">LOGIN</h1>
+          <h1 className="color-gray-1">LOGIN</h1>
           <Nav addClass="color-gray-1">
             <Nav.List>
               {navItems.map((content, index) => (
@@ -120,3 +126,10 @@ export default class LoginForm extends PureComponent {
     );
   }
 }
+
+LoginForm.propTypes = {
+  className: PropTypes.string,
+  addClass: PropTypes.string,
+  onCloseClick: PropTypes.func
+};
+LoginForm.defaultProps = {};
