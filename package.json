@@ -1,6 +1,6 @@
 {
   "name": "telia-assignment",
-  "homepage" : "http://myname.github.io/telia-assigment",
+  "homepage": "http://myname.github.io/telia-assigment",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -27,5 +27,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  }
 }
