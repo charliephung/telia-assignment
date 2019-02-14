@@ -53,7 +53,6 @@ const Header = React.memo(function({ language }) {
         </TransitionGroup>
       </div>
       <TransitionGroup>
-        [
         <CSSTransition appear={true} key={0} timeout={0} classNames="fade">
           <picture
             style={{
@@ -80,7 +79,6 @@ const Header = React.memo(function({ language }) {
             </TransitionGroup>
           </picture>
         </CSSTransition>
-        ]
       </TransitionGroup>
     </header>
   );
