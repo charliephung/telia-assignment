@@ -2,14 +2,14 @@ import React from "react";
 import "./Slider.scss";
 const Slider = React.memo(function({
   children,
-  sliderStyle = {},
+  addClass = "",
   showSlide = 0
 }) {
   return (
-    <div className="slider" style={sliderStyle}>
+    <div className={"slider " + addClass}>
       <div style={{ marginLeft: `-${100 * showSlide}%` }} className="slides">
         {React.Children.map(children, child => (
-          <div className="slide" style={sliderStyle}>
+          <div className={"slide " + addClass} >
             {child}
           </div>
         ))}
