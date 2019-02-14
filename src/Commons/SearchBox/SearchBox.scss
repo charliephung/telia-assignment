@@ -1,10 +1,14 @@
 @import "Theme/color.scss";
+@import "Theme/mixin.scss";
 
 .searchbox {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 40rem;
+  @include for-tablet-portrait {
+    width: 70%;
+  }
   &-contain {
     padding: 0.3rem 2rem;
     height: 6rem;
@@ -13,11 +17,17 @@
     border-radius: 20px;
     display: flex;
     align-items: center;
+    @include for-tablet-portrait {
+      width: 100%;
+    }
   }
 
   &:hover &-input {
     transition: all 0.2s ease;
     width: 33rem; /* 25 - 7 */
+    @include for-tablet-portrait {
+      width: 100%;
+    }
   }
   &:hover &-icon {
     transition: all 0.2s ease;
@@ -30,6 +40,9 @@
   &-input:focus {
     transition: all 0.2s ease;
     width: 32rem; /* 25 - 7 -1 */
+    @include for-tablet-portrait {
+      width: 100%;
+    }
     border-bottom: 2px solid $purple-1;
   }
 
@@ -42,6 +55,9 @@
     font-size: 1.8rem;
     background: none;
     width: 15rem;
+    @include for-tablet-portrait {
+      width: 100%;
+    }
   }
   &-button {
     transition: all 0.2s ease;
