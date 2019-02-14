@@ -1,0 +1,37 @@
+@import "Theme/color.scss";
+
+.shopping-cart {
+  position: fixed;
+  z-index: 20;
+  top: 0%;
+  right: 0%;
+  background-color: #fff;
+  width: 50rem;
+  height: 100vh;
+  &__heading {
+    background-color: $purple-1;
+    color: #fff;
+    padding: 1rem 3rem;
+
+    & h2 {
+      font-size: 2.5rem;
+    }
+    & p {
+      font-size: 1.4rem;
+    }
+  }
+  &__close {
+    position: absolute;
+    top: 1.5rem;
+    height: 3rem;
+    right: 3rem;
+    cursor: pointer;
+    font-size: 3rem;
+  }
+  &__body {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
