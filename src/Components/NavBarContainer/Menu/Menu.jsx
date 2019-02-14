@@ -20,29 +20,30 @@ import SearchBox from "Commons/SearchBox/SearchBox";
 import classnames from "classnames";
 import "./Menu.scss";
 
-const navItems = [
-  [Pin, "Find a deal"],
-  [Question, "Find instructions"],
-  [People, "Ask the Community"],
-  [Phone, "Take contact"]
-];
-const contentItem = [
-  [Tablet, "Equipment"],
-  [Sim, "Subscriptions"],
-  [Wifi, "Wide bands"],
-  [Dot, "Dot"],
-  [Video, "TV and Entertainment"],
-  [Service, "Services"],
-  [Shopping, "Bidding"],
-  [LiigaLogo, "League"]
-];
-
 const Menu = React.memo(function({
   className = "menu",
   addClass = "",
+  language,
   onCloseClick = () => {},
   ...rest
 }) {
+  const display = language.menu;
+  const navItems = [
+    [Pin, display.nav0],
+    [Question, display.nav1],
+    [People, display.nav2],
+    [Phone, display.nav3]
+  ];
+  const contentItem = [
+    [Tablet, display.item0],
+    [Sim, display.item1],
+    [Wifi, display.item2],
+    [Dot, display.item3],
+    [Video, display.item4],
+    [Service, display.item5],
+    [Shopping, display.item6],
+    [LiigaLogo, display.item7]
+  ];
   const newClassName = classnames(className, addClass);
 
   return (
@@ -58,7 +59,7 @@ const Menu = React.memo(function({
               ))}
             </Nav.List>
             <div style={{ marginLeft: "auto" }}>
-              <SearchBox />
+              <SearchBox placeHolder={display.searchbox} />
             </div>
           </Nav>
         </Container>
@@ -82,5 +83,4 @@ Menu.propTypes = {
   addClass: PropTypes.string,
   onCloseClick: PropTypes.func
 };
-Menu.defaultProps = {};
 export default Menu;

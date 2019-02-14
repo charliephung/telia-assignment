@@ -1,0 +1,73 @@
+@import "Theme/color.scss";
+
+.login-form {
+  position: fixed;
+  top: 7rem;
+  z-index: 10;
+  width: 100%;
+  border-radius: 0 0 15px 0;
+  transition: background-color 2s ease;
+
+  &__item {
+    position: relative;
+    &:last-child {
+      list-style-type: none;
+    }
+    &__underbar {
+      transition: all 0.5s;
+      position: absolute;
+      top: calc(100% - 3px);
+      height: 3px;
+      background-color: $purple-1;
+      transition: 0.5s ease;
+    }
+
+    &__underbar--active--0 {
+      left: 0;
+      width: 22rem;
+    }
+    &__underbar--active--1 {
+      left: calc(22rem + 7rem);
+      width: 12.4rem;
+    }
+    &__underbar--active--2 {
+      left: calc(29rem + 12.4rem + 7rem);
+      width: 17.2rem;
+    }
+  }
+
+  &__container {
+    display: grid;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    background-color: $white-2;
+    grid-template-columns: 70rem minmax(3rem, 30rem) auto;
+    align-items: center;
+    font-size: 1.4rem;
+    color: $gray-3;
+    justify-items: start;
+    &__left {
+      width: 100%;
+    }
+  }
+
+  &__footer {
+    flex-grow: 2;
+    background-color: #fff;
+    justify-content: space-between;
+    &__item {
+      color: $gray-3;
+      font-size: 1.5rem;
+      transition: all 0.2s ease;
+      & svg {
+        height: 4rem;
+        width: 4rem;
+        margin-right: 1rem;
+      }
+      &:hover {
+        color: $purple-1;
+        fill: $purple-1;
+      }
+    }
+  }
+}

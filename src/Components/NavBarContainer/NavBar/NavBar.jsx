@@ -6,12 +6,23 @@ import { Logo, User, Burger, Cart } from "Commons/Icons";
 import "./NavBar.scss";
 
 const languages = ["FI", "SV", "EN"];
-const navItems = [[Burger, "MENU"], [User, "LOGIN"], [Cart, ""]];
 
 class NavBar extends Component {
   render() {
-    const { showLanguage, activeItem, onItemClick, ...rest } = this.props;
-
+    const {
+      showLanguage = true,
+      activeItem = null,
+      onItemClick = () => {},
+      updateLanguage = () => {},
+      language,
+      ...rest
+    } = this.props;
+    const display = language.navbar;
+    const navItems = [
+      [Burger, display.item0],
+      [User, display.item1],
+      [Cart, ""]
+    ];
     return (
       <Nav {...rest}>
         <Nav.List>
@@ -24,7 +35,12 @@ class NavBar extends Component {
         >
           <ul>
             {languages.map((language, index) => (
-              <li key={index}>{language}</li>
+              <li
+                onClick={() => updateLanguage(language.toLowerCase())}
+                key={index}
+              >
+                {language}
+              </li>
             ))}
           </ul>
         </span>
@@ -54,12 +70,8 @@ NavBar.propTypes = {
   onChange: PropTypes.func,
   showLanguage: PropTypes.bool,
   onItemClick: PropTypes.func,
-  activeItem: PropTypes.number
-};
-NavBar.defaultProps = {
-  onChange: () => {},
-  onItemClick: () => {},
-  activeItem: null
+  activeItem: PropTypes.number,
+  updateLanguage: PropTypes.func
 };
 
 export default NavBar;

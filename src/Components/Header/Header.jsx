@@ -1,25 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { withLanguage } from "Features/Language/Language";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "./Header.scss";
 
-const Header = React.memo(function(props) {
+const Header = React.memo(function({ language }) {
   const headings = [
     <h1
       style={{
-        transition: "1000ms all ease"
+        transition: "all 1s cubic-bezier(.22,.68,0,1.71)"
       }}
       className="header-heading-1 color-purple-1 "
     >
-      WE ARE TELIA
+      {language.header.heading1}
     </h1>,
     <h5
       style={{
-        transition: "500ms all ease"
+        transition: "1s all cubic-bezier(.25,.75,.5,1.25)"
       }}
       className="header-heading-5 color-gray-1"
     >
-      Even better services both in and outside Finland.
+      {language.header.heading2}
     </h5>
   ];
   return (
@@ -31,25 +32,68 @@ const Header = React.memo(function(props) {
       />
       <div className="header-content">
         <TransitionGroup>
-          {headings.map((heading, index) => (
+          {[
             <CSSTransition
               appear={true}
-              key={index}
-              timeout={500}
-              classNames="fade"
+              key={0}
+              timeout={0}
+              classNames="slide-left"
             >
-              {heading}
+              {headings[0]}
+            </CSSTransition>,
+            <CSSTransition
+              appear={true}
+              key={1}
+              timeout={0}
+              classNames="slide-right"
+            >
+              {headings[1]}
             </CSSTransition>
-          ))}
+          ]}
         </TransitionGroup>
       </div>
-      <picture className="header-icon">
-        <img alt="headericon" src="/img/header-icon.png" />
-      </picture>
+      <TransitionGroup>
+        [
+        <CSSTransition appear={true} key={0} timeout={0} classNames="fade">
+          <picture
+            style={{
+              transition: "2000ms all ease"
+            }}
+            className="header-icon"
+          >
+            <TransitionGroup>
+              [
+              <CSSTransition
+                appear={true}
+                key={0}
+                timeout={0}
+                classNames="fade"
+              >
+                <img
+                  style={{
+                    transition: "4000ms all ease"
+                  }}
+                  alt="headericon"
+                  src="/img/header-icon.png"
+                />
+              </CSSTransition>
+              ]
+            </TransitionGroup>
+          </picture>
+        </CSSTransition>
+        ]
+      </TransitionGroup>
     </header>
   );
 });
 
-Header.propTypes = {};
+Header.propTypes = {
+  language: PropTypes.object
+};
 Header.defaultProps = {};
-export default Header;
+
+const getContext = context => ({
+  language: context.language
+});
+
+export default withLanguage(Header, getContext);
