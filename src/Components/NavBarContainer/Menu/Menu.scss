@@ -1,4 +1,5 @@
 @import "Theme/color.scss";
+@import "Theme/mixin.scss";
 
 .menu {
   position: fixed;
@@ -10,19 +11,57 @@
 
   &__container {
     background-color: rgba(0, 0, 0, 0.62);
+    @include for-tablet-portrait {
+    }
+  }
+  &__nav {
+    margin-right: auto;
+    @include for-tablet-portrait {
+      // display: flex;
+      // flex-direction: column;
+      // align-items: flex-start;
+      // width: 100%;
+      // grid-area: bottom;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 10rem 1fr;
+      grid-template-areas:
+        "top top"
+        "bottom bottom";
+    }
+  }
+  &__left {
+    @include for-tablet-portrait {
+      margin: 0;
+      grid-area: top;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
   &__list {
     flex-wrap: wrap;
+    @include for-tablet-portrait {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
   &__item {
     height: 8rem;
     padding: 1rem 1rem;
-    padding-right: 4rem;
+    padding-right: 2.5rem;
     font-size: 1.5rem;
     display: flex;
     color: $gray-1;
     align-items: center;
     transition: all 0.3s ease;
+    @include for-tablet-portrait {
+      width: 100%;
+      padding: 0.5rem 4rem;
+      border-top: 1px solid $gray-2;
+    }
     &:hover {
       color: $purple-1;
       font-weight: bold;
@@ -42,6 +81,9 @@
     transition: all 0.3s ease;
     width: 6rem;
     padding-right: 1.5rem;
+    @include for-tablet-portrait {
+      width: 4rem;
+    }
   }
 
   &__content {
@@ -49,6 +91,15 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     background-color: #fff;
+
+    @include for-tablet-landscape {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include for-tablet-portrait {
+      display: flex;
+      flex-direction: column;
+    }
+
     &__item {
       padding: 4rem 3rem;
       font-size: 2.1rem;
@@ -57,6 +108,10 @@
       cursor: pointer;
       transition: all 0.3s ease;
       color: $gray-3;
+      @include for-tablet-portrait {
+        padding: 0.5rem 5rem;
+        border-bottom: 1px solid $gray-2;
+      }
     }
     &__item:hover {
       color: $purple-1;
@@ -69,6 +124,9 @@
       transition: all 0.3s ease;
       width: 6rem;
       padding-right: 1.5rem;
+      @include for-tablet-portrait {
+        width: 4rem;
+      }
     }
   }
 }

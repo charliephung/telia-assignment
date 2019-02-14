@@ -50,7 +50,7 @@ const Menu = React.memo(function({
     <div {...rest} className={newClassName}>
       <div className="box-shadow-1">
         <Container addClass="menu__container">
-          <Nav>
+          <Nav addClass="menu__nav">
             <Nav.List addClass="menu__list">
               {navItems.map(([Icon, content], index) => (
                 <Nav.Item key={index} className="menu__item">
@@ -58,7 +58,7 @@ const Menu = React.memo(function({
                 </Nav.Item>
               ))}
             </Nav.List>
-            <div style={{ marginLeft: "auto" }}>
+            <div className="menu__left">
               <SearchBox placeHolder={display.searchbox} />
             </div>
           </Nav>
