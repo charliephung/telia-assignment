@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
 @import "Theme/animation.scss";
+@import "Theme/mixin.scss";
 
 /* Cleaning */
 *,
@@ -16,6 +17,16 @@
 html {
   font-family: "Roboto Mono", monospace;
   font-size: 62.5%;
+
+  @include for-tablet-landscape {
+    font-size: 60%;
+  }
+  @include for-tablet-portrait {
+    font-size: 40%;
+  }
+  @include for-phone {
+    font-size: 30%;
+  }
 }
 
 a,
