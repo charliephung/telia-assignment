@@ -1,5 +1,6 @@
 {
   "name": "telia-assignment",
+  "homepage" : "http://myname.github.io/telia-assigment",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
