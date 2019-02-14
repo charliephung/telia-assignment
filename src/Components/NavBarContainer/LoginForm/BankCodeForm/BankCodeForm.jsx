@@ -4,7 +4,7 @@ import classnames from "classnames";
 
 const BankCodeForm = React.memo(function(props) {
   return (
-    <form {...props}>
+    <form  {...props}>
       <Button addClass={classnames("btn--green", "color-white-1")}>
         LOGIN WITH BANKING CODES &#10095;
       </Button>

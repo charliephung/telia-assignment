@@ -16,7 +16,11 @@ export class UserNameForm extends PureComponent {
 
   render() {
     const { username, password, checkbox } = this.state;
-    const { className = "username-form", addClass, ...rest } = this.props;
+    const {
+      className = "username-form box-shadow-3",
+      addClass,
+      ...rest
+    } = this.props;
     const newClassName = classnames(className, addClass);
 
     return (

@@ -5,7 +5,11 @@ import "./MobileForm.scss";
 
 export class MobileForm extends PureComponent {
   render() {
-    const { className = "mobile-form", addClass, ...rest } = this.props;
+    const {
+      className = "mobile-form box-shadow-3",
+      addClass,
+      ...rest
+    } = this.props;
     const newClassName = classnames(className, addClass);
     return (
       <form className={newClassName} {...rest}>
