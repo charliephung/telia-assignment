@@ -3,6 +3,10 @@
   "homepage": "http://charliephung.github.io/telia-assigment",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "11.6.0",
+    "npm": "6.6.0"
+  },
   "dependencies": {
     "classnames": "^2.2.6",
     "hoist-non-react-statics": "^3.3.0",
