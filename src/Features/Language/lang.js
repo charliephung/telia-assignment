@@ -119,7 +119,7 @@ export default {
       heading2: "Ännu bättre service både i och utanför Finland."
     },
     login: {
-      header0: "LOGGA IN",
+      heading0: "LOGGA IN",
       nav0: "med mobilcertifikat",
       nav1: "med användarnamn",
       nav2: "Med bankkoder",
