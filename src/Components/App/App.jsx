@@ -1,16 +1,30 @@
 import React, { Component } from "react";
-import Header from "Components/Header/Header";
 import { Language } from "Features/Language/Language";
-import NavBarContainer from "Components/NavBarContainer/NavBarContainer";
+import Loading from "Commons/Loading";
+import DynamicImport from "Features/DynamicImport/DynamicImport";
 import "./App.scss";
 
 class App extends Component {
   render() {
     return (
       <Language>
-        <NavBarContainer />
-        <Header />
-        <div style={{ height: "2000px" }} />
+        <DynamicImport
+          load={() => import("Components/NavBarContainer/NavBarContainer")}
+          render={Comp => (Comp === null ? null : <Comp />)}
+        />
+        <DynamicImport
+          load={() => import("Components/Header/Header")}
+          render={Comp =>
+            Comp === null ? (
+              <Loading />
+            ) : (
+              <>
+                <Comp />
+                <div style={{ height: "2000px" }} />
+              </>
+            )
+          }
+        />
       </Language>
     );
   }
