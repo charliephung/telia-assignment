@@ -1,4 +1,6 @@
 @import "Theme/color.scss";
+@import "Theme/mixin.scss";
+
 .navbar {
   &__brand {
     height: 4.5rem;
@@ -14,6 +16,16 @@
     fill: $purple-1;
   }
   &__item {
+    &__text {
+      @include for-tablet-portrait {
+        display: none;
+      }
+    }
+    @include for-tablet-portrait {
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+    }
     color: $purple-1;
     position: relative;
     font-size: 1.6rem;

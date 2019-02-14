@@ -57,7 +57,9 @@ class NavBar extends Component {
                 open={activeItem === 0 ? true : false}
                 addClass="navbar__icon"
               />
+              <span className="navbar__item__text">
               {content}
+              </span>
             </Nav.Item>
           ))}
         </Nav.List>
