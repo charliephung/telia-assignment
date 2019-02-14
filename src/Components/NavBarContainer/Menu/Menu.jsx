@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Nav from "Commons/Nav/Nav";
 import {
   Question,
@@ -39,6 +40,7 @@ const contentItem = [
 const Menu = React.memo(function({
   className = "menu",
   addClass = "",
+  onCloseClick = () => {},
   ...rest
 }) {
   const newClassName = classnames(className, addClass);
@@ -74,4 +76,11 @@ const Menu = React.memo(function({
     </div>
   );
 });
+
+Menu.propTypes = {
+  className: PropTypes.string,
+  addClass: PropTypes.string,
+  onCloseClick: PropTypes.func
+};
+Menu.defaultProps = {};
 export default Menu;
