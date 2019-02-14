@@ -16,3 +16,5 @@ export { default as Video } from "./Video";
 export { default as Burger } from "./Burger";
 export { default as Cart } from "./Cart";
 export { default as Wifi } from "./Wifi";
+export { default as Email } from "./Email";
+export { default as FingerPrint } from "./FingerPrint";
