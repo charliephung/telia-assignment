@@ -52,7 +52,7 @@ class LoginForm extends PureComponent {
     const Forms = [MobileForm, UserNameForm, BankCodeForm];
     return (
       <div {...rest} className={newClassName}>
-        <Container addClass="login-form__outer-container" style={{}}>
+        <Container addClass="login-form__outer-container">
           <h1 className="login-form__heading color-gray-1">
             {display.heading0}
           </h1>
