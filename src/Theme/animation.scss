@@ -7,13 +7,13 @@
 .drop-enter-done {
   transform: translateY(0%);
 }
-.drop-fade-exit {
+.drop-exit {
   transform: translateY(-100%);
 }
 .drop-exit-active {
   transform: translateY(-100%);
 }
-.drop-fade-exit-done {
+.drop-exit-done {
   transform: translateY(-100%);
 }
 // ================
@@ -26,12 +26,50 @@
 .fade-enter-done {
   opacity: 1;
 }
-.fade-fade-exit {
+.fade-exit {
   opacity: 1;
 }
 .fade-exit-active {
   opacity: 0;
 }
-.fade-fade-exit-done {
+.fade-exit-done {
   opacity: 0;
+}
+// ================
+.slide-left-enter {
+  transform: translateX(-100%);
+}
+.slide-left-enter-active {
+  transform: translateX(0);
+}
+.slide-left-enter-done {
+  transform: translateX(0);
+}
+.slide-left-exit {
+  transform: translateX(0);
+}
+.slide-left-exit-active {
+  transform: translateX(-100%);
+}
+.slide-left-exit-done {
+  transform: translateX(-100%);
+}
+// ================
+.slide-right-enter {
+  transform: translateX(100%);
+}
+.slide-right-enter-active {
+  transform: translateX(0);
+}
+.slide-right-enter-done {
+  transform: translateX(0);
+}
+.slide-right-exit {
+  transform: translateX(0);
+}
+.slide-right-exit-active {
+  transform: translateX(100%);
+}
+.slide-right-exit-done {
+  transform: translateX(100%);
 }

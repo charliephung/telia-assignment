@@ -36,8 +36,13 @@ const contentItem = [
   [LiigaLogo, "League"]
 ];
 
-export default function Menu({ className = "menu", addClass = "", ...rest }) {
+const Menu = React.memo(function({
+  className = "menu",
+  addClass = "",
+  ...rest
+}) {
   const newClassName = classnames(className, addClass);
+
   return (
     <div {...rest} className={newClassName}>
       <div className="box-shadow-1">
@@ -68,4 +73,5 @@ export default function Menu({ className = "menu", addClass = "", ...rest }) {
       </div>
     </div>
   );
-}
+});
+export default Menu;

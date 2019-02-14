@@ -1,0 +1,15 @@
+.slider {
+  overflow: hidden;
+}
+
+.slides {
+  transition: 500ms all ease;
+  display: flex;
+  overflow-x: hidden;
+}
+.slide {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
