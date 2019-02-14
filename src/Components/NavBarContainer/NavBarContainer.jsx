@@ -1,39 +1,38 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import classnames from "classnames";
+import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import Container from "Commons/Container/Container";
 import Section from "Features/Section/Section";
 import LoginForm from "./LoginForm/LoginForm";
 import NavBar from "./NavBar/NavBar";
+import classnames from "classnames";
 import Menu from "./Menu/Menu";
-
 import "./NavBarContainer.scss";
 
-const NavBarDropDownBackGround = React.memo(function({
+const navbarContent = [
+  {
+    Comp: Menu,
+    id: 0,
+    animation: "drop"
+  },
+  {
+    Comp: LoginForm,
+    id: 1,
+    animation: "drop"
+  },
+  { Comp: ShoppingCart, id: 2, animation: "slide-right" }
+];
+
+const NavBarMainBackGround = React.memo(function({
   addClass = "",
   onClick,
   ...rest
 }) {
-  return (
-    <div
-      {...rest}
-      onClick={onClick}
-      style={{
-        transition: "1000ms all ease",
-        position: "fixed",
-        top: "0",
-        left: "0",
-        zIndex: 5,
-        width: "100%",
-        height: "100%",
-        backgroundColor: "rgba(0, 0, 0, 0.3)"
-      }}
-    />
-  );
+  return <div {...rest} onClick={onClick} className="navbar__background" />;
 });
 
-export default class NavBarContainer extends Component {
-  state = { activeItem: 1 };
+class NavBarContainer extends PureComponent {
+  state = { activeItem: null };
 
   onItemClick = activeItem => {
     this.setState(state =>
@@ -41,9 +40,29 @@ export default class NavBarContainer extends Component {
     );
   };
 
+  renderContent(navbarContent, state) {
+    if (navbarContent[state]) {
+      const { Comp, id, animation } = navbarContent[state];
+      return [
+        <CSSTransition timeout={300} key={id} classNames={animation}>
+          <Comp
+            style={{
+              transition: "300ms all ease"
+            }}
+            onCloseClick={id === 2 ? () => this.onItemClick(null) : undefined}
+          />
+        </CSSTransition>,
+        <CSSTransition timeout={1000} key={10} classNames="fade">
+          <NavBarMainBackGround onClick={() => this.onItemClick(null)} />
+        </CSSTransition>
+      ];
+    }
+    return null;
+  }
+
   render() {
     const { activeItem } = this.state;
-    const NavBarDropDown = [Menu, LoginForm][activeItem];
+
     return (
       <>
         <Section config={{ threshold: 1 }}>
@@ -60,22 +79,14 @@ export default class NavBarContainer extends Component {
           )}
         </Section>
         <TransitionGroup>
-          {NavBarDropDown && [
-            <CSSTransition timeout={300} key={activeItem} classNames="drop">
-              <NavBarDropDown
-                style={{
-                  transition: "300ms all ease"
-                }}
-              />
-            </CSSTransition>,
-            <CSSTransition timeout={1000} key={10} classNames="fade">
-              <NavBarDropDownBackGround
-                onClick={() => this.onItemClick(null)}
-              />
-            </CSSTransition>
-          ]}
+          {this.renderContent(navbarContent, activeItem)}
         </TransitionGroup>
       </>
     );
   }
 }
+
+NavBarContainer.propTypes = {};
+NavBarContainer.defaultProps = {};
+
+export default NavBarContainer;
