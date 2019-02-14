@@ -52,15 +52,12 @@ class LoginForm extends PureComponent {
     const Forms = [MobileForm, UserNameForm, BankCodeForm];
     return (
       <div {...rest} className={newClassName}>
-        <Container
-          style={{
-            backgroundColor: "rgba(0, 0, 0, 0.7)",
-            paddingTop: "3rem"
-          }}
-        >
-          <h1 className="color-gray-1">{display.heading0}</h1>
+        <Container addClass="login-form__outer-container" style={{}}>
+          <h1 className="login-form__heading color-gray-1">
+            {display.heading0}
+          </h1>
           <Nav addClass="color-gray-1">
-            <Nav.List>
+            <Nav.List addClass="login-form__list">
               {navItems.map((content, index) => (
                 <Nav.Item
                   onClick={() => this.onLoginTabClick(index)}
@@ -82,12 +79,7 @@ class LoginForm extends PureComponent {
         <div className="login-form__body">
           <Container addClass="login-form__container">
             <div className="login-form__container__left">
-              <Slider
-                sliderStyle={{
-                  width: "70rem"
-                }}
-                showSlide={activeItem}
-              >
+              <Slider addClass={"login-form__slider"} showSlide={activeItem}>
                 {Forms.map((Form, index) => (
                   <Form language={display} key={index} />
                 ))}
@@ -96,7 +88,6 @@ class LoginForm extends PureComponent {
             <div />
             <div className="login-form__container__right">
               <h3>{display.listHeading}</h3>
-              <br />
               <ul>
                 {things.map((content, index) => (
                   <li key={index}>{content}</li>
