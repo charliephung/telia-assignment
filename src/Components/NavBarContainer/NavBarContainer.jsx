@@ -9,6 +9,29 @@ import Menu from "./Menu/Menu";
 
 import "./NavBarContainer.scss";
 
+const NavBarDropDownBackGround = React.memo(function({
+  addClass = "",
+  onClick,
+  ...rest
+}) {
+  return (
+    <div
+      {...rest}
+      onClick={onClick}
+      style={{
+        transition: "1000ms all ease",
+        position: "fixed",
+        top: "0",
+        left: "0",
+        zIndex: 5,
+        width: "100%",
+        height: "100%",
+        backgroundColor: "rgba(0, 0, 0, 0.3)"
+      }}
+    />
+  );
+});
+
 export default class NavBarContainer extends Component {
   state = { activeItem: 1 };
 
@@ -55,23 +78,4 @@ export default class NavBarContainer extends Component {
       </>
     );
   }
-}
-
-function NavBarDropDownBackGround({ addClass = "", onClick, ...rest }) {
-  return (
-    <div
-      {...rest}
-      onClick={onClick}
-      style={{
-        transition: "1000ms all ease",
-        position: "fixed",
-        top: "0",
-        left: "0",
-        zIndex: 5,
-        width: "100%",
-        height: "100%",
-        backgroundColor: "rgba(0, 0, 0, 0.3)"
-      }}
-    />
-  );
 }
