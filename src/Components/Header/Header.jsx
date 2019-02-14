@@ -28,9 +28,9 @@ const Header = React.memo(function({ language }) {
       <img
         alt="headerimg"
         src="/img/header-img.jpg"
-        className="header-background"
+        className="header__background"
       />
-      <div className="header-content">
+      <div className="header__content">
         <TransitionGroup>
           {[
             <CSSTransition
@@ -59,10 +59,9 @@ const Header = React.memo(function({ language }) {
             style={{
               transition: "2000ms all ease"
             }}
-            className="header-icon"
+            className="header__icon"
           >
             <TransitionGroup>
-              [
               <CSSTransition
                 appear={true}
                 key={0}
@@ -70,6 +69,7 @@ const Header = React.memo(function({ language }) {
                 classNames="fade"
               >
                 <img
+                  className="header__icon__background"
                   style={{
                     transition: "4000ms all ease"
                   }}
@@ -77,7 +77,6 @@ const Header = React.memo(function({ language }) {
                   src="/img/header-icon.png"
                 />
               </CSSTransition>
-              ]
             </TransitionGroup>
           </picture>
         </CSSTransition>

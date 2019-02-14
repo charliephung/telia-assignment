@@ -1,4 +1,5 @@
 @import "Theme/color.scss";
+@import "Theme/mixin.scss";
 
 .header {
   height: 55rem;
@@ -8,7 +9,7 @@
   width: 100%;
   z-index: 1;
 
-  &-background {
+  &__background {
     position: absolute;
     top: 0;
     left: 0;
@@ -17,16 +18,22 @@
     z-index: -10;
   }
 
-  &-icon {
+  &__icon {
     position: absolute;
     top: 10%;
     right: 15%;
-    & img {
+    &__background {
       z-index: 5;
       width: 500px;
+      @include for-phone {
+        width: 300px;
+      }
+      @include for-small-phone {
+        width: 250px;
+      }
     }
   }
-  &-content {
+  &__content {
     padding: 0rem 10rem;
     z-index: 10;
   }
