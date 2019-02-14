@@ -18,6 +18,12 @@ html {
   font-size: 62.5%;
 }
 
+a,
+a:visited,
+a:link {
+  text-decoration: none;
+  color: inherit;
+}
 body {
   font-weight: 400;
   line-height: 1.7;
