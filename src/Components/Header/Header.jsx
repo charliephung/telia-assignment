@@ -52,13 +52,12 @@ const Header = React.memo(function({ language }) {
           ]}
         </TransitionGroup>
       </div>
-      <TransitionGroup>
+      <TransitionGroup className="header__icon">
         <CSSTransition appear={true} key={0} timeout={0} classNames="fade">
           <picture
             style={{
               transition: "2000ms all ease"
             }}
-            className="header__icon"
           >
             <TransitionGroup>
               <CSSTransition

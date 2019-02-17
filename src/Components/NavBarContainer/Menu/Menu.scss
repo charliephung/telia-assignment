@@ -6,7 +6,6 @@
   top: 7rem;
   z-index: 10;
   width: 100%;
-  border-radius: 0 0 15px 0;
   transition: background-color 2s ease;
   height: calc(100vh - 7rem);
   overflow: scroll;
@@ -96,6 +95,9 @@
     @include for-tablet-portrait {
       display: flex;
       flex-direction: column;
+    }
+    @include for-phone {
+      padding-bottom: 2rem;
     }
 
     &__item {
