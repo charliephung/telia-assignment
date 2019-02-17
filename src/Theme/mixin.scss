@@ -18,6 +18,11 @@
     @content;
   }
 }
+@mixin for-laptop {
+  @media (max-width: 1100px) {
+    @content;
+  }
+}
 @mixin for-desktop {
   @media (max-width: 1300px) {
     @content;

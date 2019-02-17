@@ -9,6 +9,7 @@
   background-color: #fff;
   width: 50rem;
   height: 100vh;
+  overflow-y: scroll;
   @include for-phone {
     width: 33rem;
   }
