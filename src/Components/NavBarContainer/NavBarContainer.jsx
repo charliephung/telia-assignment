@@ -71,7 +71,7 @@ class NavBarContainer extends PureComponent {
     return (
       <>
         <Section config={{ threshold: 1 }}>
-          {({ entry }) => (
+          {({ entry, env }) => (
             <Container
               addClass={classnames("navbar__container--fixed", "box-shadow-1")}
             >
@@ -80,7 +80,13 @@ class NavBarContainer extends PureComponent {
                 updateLanguage={updateLanguage}
                 activeItem={activeItem}
                 onItemClick={this.onItemClick}
-                showLanguage={entry.intersectionRatio === 1 ? true : false}
+                showLanguage={
+                  env === "mobile"
+                    ? true
+                    : entry.intersectionRatio === 1
+                    ? true
+                    : false
+                }
               />
             </Container>
           )}

@@ -1,24 +1,39 @@
 import React, { Component } from "react";
 
+const checkMobileEnv = () =>
+  navigator.userAgent.match(/Android/i) ||
+  navigator.userAgent.match(/webOS/i) ||
+  navigator.userAgent.match(/iPhone/i) ||
+  navigator.userAgent.match(/iPad/i) ||
+  navigator.userAgent.match(/iPod/i) ||
+  navigator.userAgent.match(/BlackBerry/i) ||
+  navigator.userAgent.match(/Windows Phone/i);
+
 export class Section extends Component {
   node = React.createRef();
-  state = { entry: {}, observer: {} };
+  state = { entry: {}, observer: {}, env: null };
 
   componentDidMount() {
     const { current } = this.node;
     const { config = {} } = this.props;
-    this.observer = new IntersectionObserver(([entry], observer) => {
+    if (checkMobileEnv()) {
       this.setState(() => ({
-        entry,
-        observer
+        env: "mobile"
       }));
-    }, config);
+    } else {
+      this.observer = new IntersectionObserver(([entry], observer) => {
+        this.setState(() => ({
+          entry,
+          observer
+        }));
+      }, config);
 
-    this.observer.observe(current);
+      this.observer.observe(current);
+    }
   }
   componentWillUnmount() {
     const { current } = this.node;
-    this.observer.unobserve(current);
+    if (this.observer) this.observer.unobserve(current);
   }
 
   render() {
