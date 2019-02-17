@@ -19,11 +19,6 @@
   &__nav {
     margin-right: auto;
     @include for-tablet-portrait {
-      // display: flex;
-      // flex-direction: column;
-      // align-items: flex-start;
-      // width: 100%;
-      // grid-area: bottom;
       display: grid;
       grid-template-columns: 1fr;
       grid-template-rows: 10rem 1fr;
@@ -53,7 +48,7 @@
   &__item {
     height: 8rem;
     padding: 1rem 1rem;
-    padding-right: 2.5rem;
+    padding-right: 6rem;
     font-size: 1.5rem;
     display: flex;
     color: $gray-1;
