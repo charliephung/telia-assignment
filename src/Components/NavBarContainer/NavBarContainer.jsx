@@ -66,8 +66,6 @@ class NavBarContainer extends PureComponent {
   render() {
     const { activeItem } = this.state;
     const { language, updateLanguage } = this.props;
-    console.log("Render");
-
     return (
       <>
         <Section config={{ threshold: 1 }}>
