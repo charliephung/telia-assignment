@@ -1,0 +1,14 @@
+.mobile-form {
+  background-color: #fff;
+  padding: 1rem 2rem;
+  width: 100%;
+  margin: 3rem 3rem;
+  display: flex;
+  &__input {
+    flex-grow: 2;
+    height: 4.4rem;
+    font-size: 1.6rem;
+    border: none;
+    outline: none;
+  }
+}
