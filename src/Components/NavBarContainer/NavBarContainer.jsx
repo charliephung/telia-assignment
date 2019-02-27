@@ -1,19 +1,17 @@
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import ShoppingCart from "./ShoppingCart/ShoppingCart";
-import Container from "Commons/Container/Container";
-import Section from "Features/Section/Section";
-import FormContainer from "./FormContainer/FormContainer";
-import NavBar from "./NavBar/NavBar";
-import classnames from "classnames";
-import Menu from "./Menu/Menu";
-import "./NavBarContainer.scss";
+import PropTypes from "prop-types";
 import { withLanguage } from "Features/Language/Language";
+import IsScrollTop from "Features/IsScrollTop/IsScrollTop";
+import FormContainer from "Components/FormContainer/FormContainer";
+import ShoppingCart from "Components/ShoppingCart/ShoppingCart";
+import DropDownMenu from "Components/DropDownMenu/DropDownMenu";
+import NavBar from "./NavBar/NavBar";
+import "./NavBarContainer.scss";
 
 const navbarContent = [
   {
-    Comp: Menu,
+    Comp: DropDownMenu,
     id: 0,
     animation: "drop"
   },
@@ -24,14 +22,6 @@ const navbarContent = [
   },
   { Comp: ShoppingCart, id: 2, animation: "slide-right" }
 ];
-
-const NavBarMainBackGround = React.memo(function({
-  addClass = "",
-  onClick,
-  ...rest
-}) {
-  return <div {...rest} onClick={onClick} className="navbar__background" />;
-});
 
 class NavBarContainer extends PureComponent {
   state = { activeItem: null };
@@ -54,9 +44,6 @@ class NavBarContainer extends PureComponent {
             }}
             onCloseClick={id === 2 ? () => this.onItemClick(null) : undefined}
           />
-        </CSSTransition>,
-        <CSSTransition timeout={1000} key={10} classNames="fade">
-          <NavBarMainBackGround onClick={() => this.onItemClick(null)} />
         </CSSTransition>
       ];
     }
@@ -67,32 +54,32 @@ class NavBarContainer extends PureComponent {
     const { activeItem } = this.state;
     const { language, updateLanguage } = this.props;
     return (
-      <>
-        <Section config={{ threshold: 1 }}>
-          {({ entry, env }) => (
-            <Container
-              addClass={classnames("navbar__container--fixed", "box-shadow-1")}
-            >
-              <NavBar
-                language={language}
-                updateLanguage={updateLanguage}
-                activeItem={activeItem}
-                onItemClick={this.onItemClick}
-                showLanguage={
-                  env === "mobile"
-                    ? true
-                    : entry.intersectionRatio === 1
-                    ? true
-                    : false
-                }
-              />
-            </Container>
+      <div className={"navbar-container"}>
+        <IsScrollTop>
+          {({ isScrollTop }) => (
+            <NavBar
+              language={language}
+              updateLanguage={updateLanguage}
+              activeItem={activeItem}
+              onItemClick={this.onItemClick}
+              showLanguage={isScrollTop ? true : false}
+            />
           )}
-        </Section>
+        </IsScrollTop>
         <TransitionGroup>
           {this.renderContent(navbarContent, activeItem, language)}
         </TransitionGroup>
-      </>
+        <TransitionGroup>
+          {activeItem !== null && (
+            <CSSTransition timeout={300} key={10} classNames={"fade"}>
+              <div
+                onClick={() => this.onItemClick(null)}
+                className="navbar-container__dark-background"
+              />
+            </CSSTransition>
+          )}
+        </TransitionGroup>
+      </div>
     );
   }
 }
