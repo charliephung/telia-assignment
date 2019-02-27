@@ -2,6 +2,7 @@
 @import "Theme/mixin.scss";
 
 .navbar {
+  z-index: 1;
   &__brand {
     height: 4.5rem;
     width: 12rem;
