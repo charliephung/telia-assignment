@@ -1,0 +1,45 @@
+@import "Theme/color.scss";
+@import "Theme/mixin.scss";
+
+.shopping-cart {
+  position: fixed;
+  z-index: 2;
+  top: 0%;
+  right: 0%;
+  background-color: #fff;
+  width: 50rem;
+  height: 100vh;
+  @include for-phone {
+    width: 33rem;
+  }
+  @include for-tablet-portrait {
+    height: calc(100vh - 7rem);
+    overflow: scroll;
+  }
+  &__heading {
+    background-color: $purple-1;
+    color: #fff;
+    padding: 1rem 3rem;
+
+    & h2 {
+      font-size: 2.5rem;
+    }
+    & p {
+      font-size: 1.4rem;
+    }
+  }
+  &__close {
+    position: absolute;
+    top: 1.5rem;
+    height: 3rem;
+    right: 3rem;
+    cursor: pointer;
+    font-size: 3rem;
+  }
+  &__body {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
