@@ -5,10 +5,10 @@
 .header {
   height: 55rem;
   display: flex;
+  z-index: 0;
   align-items: center;
   position: relative;
   width: 100%;
-  z-index: 1;
   box-shadow: $box-shadow-3;
   @include for-small-phone {
     height: 100%;
