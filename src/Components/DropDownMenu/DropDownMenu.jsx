@@ -21,7 +21,7 @@ import classnames from "classnames";
 import "./DropDownMenu.scss";
 
 const DropDownMenu = React.memo(function({
-  className = "menu",
+  className = "dropdown-menu",
   addClass = "",
   language,
   onCloseClick = () => {},
