@@ -20,7 +20,6 @@ const Header = React.memo(function({ language }) {
               key={0}
               timeout={0}
               classNames="slide-left"
-              tran
             >
               <h1
                 style={{
