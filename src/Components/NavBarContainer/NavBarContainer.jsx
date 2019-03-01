@@ -9,7 +9,7 @@ import DropDownMenu from "Components/DropDownMenu/DropDownMenu";
 import NavBar from "./NavBar/NavBar";
 import "./NavBarContainer.scss";
 
-const navbarContent = [
+const navbarComponents = [
   {
     Comp: DropDownMenu,
     id: 0,
@@ -32,9 +32,9 @@ class NavBarContainer extends PureComponent {
     );
   };
 
-  renderContent(navbarContent, state, language) {
-    if (navbarContent[state]) {
-      const { Comp, id, animation } = navbarContent[state];
+  renderContent(navbarComponents, state, language) {
+    if (navbarComponents[state]) {
+      const { Comp, id, animation } = navbarComponents[state];
       return [
         <CSSTransition timeout={300} key={id} classNames={animation}>
           <Comp
@@ -67,7 +67,7 @@ class NavBarContainer extends PureComponent {
           )}
         </IsScrollTop>
         <TransitionGroup>
-          {this.renderContent(navbarContent, activeItem, language)}
+          {this.renderContent(navbarComponents, activeItem, language)}
         </TransitionGroup>
         <TransitionGroup>
           {activeItem !== null && (
