@@ -59,6 +59,7 @@
   }
   &-heading-1 {
     font-size: 6rem;
+    transition: all 1s cubic-bezier(0.22, 0.68, 0, 1.71);
     @include for-small-phone {
       font-size: 4rem;
       text-align: center;
@@ -66,6 +67,7 @@
   }
   &-heading-5 {
     font-size: 3rem;
+    transition: 1s all cubic-bezier(0.25, 0.75, 0.5, 1.25);
     @include for-small-phone {
       text-align: center;
       font-size: 2.5rem;

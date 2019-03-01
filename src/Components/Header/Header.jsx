@@ -21,12 +21,7 @@ const Header = React.memo(function({ language }) {
               timeout={0}
               classNames="slide-left"
             >
-              <h1
-                style={{
-                  transition: "all 1s cubic-bezier(.22,.68,0,1.71)"
-                }}
-                className="header-heading-1 color-purple-1 "
-              >
+              <h1 className="header-heading-1 color-purple-1 ">
                 {language.header.heading1}
               </h1>
             </CSSTransition>,
@@ -36,12 +31,7 @@ const Header = React.memo(function({ language }) {
               timeout={0}
               classNames="slide-right"
             >
-              <h5
-                style={{
-                  transition: "1s all cubic-bezier(.25,.75,.5,1.25)"
-                }}
-                className="header-heading-5 color-gray-1"
-              >
+              <h5 className="header-heading-5 color-gray-1">
                 {language.header.heading2}
               </h5>
             </CSSTransition>
